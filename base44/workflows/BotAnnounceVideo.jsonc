@@ -1,0 +1,42 @@
+{
+  "description": "When Cade adds a new video, the WilbanksFishing Bot announces it in the crew feed.",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create"
+      ],
+      "entity_name": "Video"
+    }
+  },
+  "name": "Bot Announce New Video",
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "bot_announce_video",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "announce": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "bot-announce",
+            "args": {
+              "type": "video",
+              "title": "${ .trigger.data.title }",
+              "url": "${ .trigger.data.youtube_url }"
+            }
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Announce new video",
+            "description": "Bot posts in crew feed"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "AboutContent",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "title": "Title"
+    },
+    "bio": {
+      "type": "string",
+      "title": "Bio Text"
+    },
+    "photo_url": {
+      "type": "string",
+      "format": "uri",
+      "title": "Photo URL"
+    },
+    "display_order": {
+      "type": "number",
+      "default": 0,
+      "title": "Display Order"
+    }
+  },
+  "required": [
+    "title",
+    "bio"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": null,
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

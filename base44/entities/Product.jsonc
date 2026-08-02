@@ -1,0 +1,106 @@
+{
+  "name": "Product",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Product Name"
+    },
+    "tagline": {
+      "type": "string",
+      "title": "Tagline"
+    },
+    "description": {
+      "type": "string",
+      "title": "Description"
+    },
+    "price": {
+      "type": "number",
+      "title": "Price (USD)"
+    },
+    "image_url": {
+      "type": "string",
+      "format": "uri",
+      "title": "Product Image URL"
+    },
+    "fabric_texture_url": {
+      "type": "string",
+      "format": "uri",
+      "title": "Fabric Texture Image URL"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "apparel",
+        "headwear",
+        "accessories",
+        "drinkware"
+      ],
+      "default": "apparel",
+      "title": "Category"
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false,
+      "title": "Featured (Large Tile)"
+    },
+    "specs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "Technical Specs"
+    },
+    "sizes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "title": "Available Sizes"
+    },
+    "colors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "title": "Available Colors"
+    },
+    "in_stock": {
+      "type": "boolean",
+      "default": true,
+      "title": "In Stock"
+    }
+  },
+  "required": [
+    "name",
+    "price",
+    "image_url",
+    "category"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": null,
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

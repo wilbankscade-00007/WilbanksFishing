@@ -1,0 +1,58 @@
+{
+  "name": "CatchGalleryPhoto",
+  "type": "object",
+  "properties": {
+    "image_url": {
+      "type": "string",
+      "format": "uri",
+      "title": "Image URL"
+    },
+    "caption": {
+      "type": "string",
+      "title": "Caption"
+    },
+    "author": {
+      "type": "string",
+      "title": "Submitted By"
+    },
+    "display_order": {
+      "type": "number",
+      "default": 0,
+      "title": "Display Order"
+    },
+    "is_catch_of_month": {
+      "type": "boolean",
+      "default": false,
+      "title": "Catch of the Month"
+    },
+    "featured_month": {
+      "type": "string",
+      "title": "Featured Month (YYYY-MM)"
+    },
+    "story": {
+      "type": "string",
+      "title": "Story"
+    }
+  },
+  "required": [
+    "image_url"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": null,
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

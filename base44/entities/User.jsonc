@@ -1,0 +1,26 @@
+{
+  "properties": {
+    "role": {
+      "type": "string",
+      "description": "The role of the user in the app",
+      "enum": [
+        "admin",
+        "user"
+      ]
+    },
+    "banned_shout": {
+      "type": "boolean",
+      "default": false,
+      "title": "Banned from Crew Feed"
+    },
+    "ban_reason": {
+      "type": "string",
+      "title": "Ban Reason"
+    }
+  },
+  "required": [
+    "role"
+  ],
+  "name": "User",
+  "type": "object"
+}

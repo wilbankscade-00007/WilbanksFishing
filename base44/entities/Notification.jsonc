@@ -1,0 +1,95 @@
+{
+  "name": "Notification",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "title": "User ID"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "tier",
+        "top3",
+        "new_video",
+        "milestone",
+        "custom"
+      ],
+      "default": "custom",
+      "title": "Type"
+    },
+    "ref": {
+      "type": "string",
+      "title": "Dedup Key"
+    },
+    "title": {
+      "type": "string",
+      "title": "Title"
+    },
+    "body": {
+      "type": "string",
+      "title": "Body"
+    },
+    "link_url": {
+      "type": "string",
+      "title": "Link URL"
+    },
+    "icon": {
+      "type": "string",
+      "enum": [
+        "trophy",
+        "video",
+        "star",
+        "gift",
+        "bell"
+      ],
+      "default": "bell",
+      "title": "Icon"
+    },
+    "read": {
+      "type": "boolean",
+      "default": false,
+      "title": "Read"
+    }
+  },
+  "required": [
+    "user_id",
+    "title"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "data.user_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "data.user_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

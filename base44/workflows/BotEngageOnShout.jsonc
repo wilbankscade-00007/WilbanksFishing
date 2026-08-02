@@ -1,0 +1,42 @@
+{
+  "name": "Bot Engage on Crew Shout",
+  "description": "When a member posts a text message in the crew feed, the WilbanksFishing Bot engages to keep the conversation going while Cade is inactive or asleep.",
+  "trigger": {
+    "config": {
+      "trigger_type": "entity",
+      "entity_name": "Reaction",
+      "events": [
+        "create"
+      ]
+    },
+    "condition": "${ .trigger.data.target_type == \"emoji_shout\" and (.trigger.data.value | length) > 3 }"
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "bot_engage_on_shout",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "engage": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "bot-engage",
+            "args": {
+              "value": "${ .trigger.data.value }",
+              "user_id": "${ .trigger.data.user_id }",
+              "author_name": "${ .trigger.data.author_name }"
+            }
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Bot engages on shout",
+            "description": "Replies when Cade is inactive"
+          }
+        }
+      }
+    ]
+  }
+}

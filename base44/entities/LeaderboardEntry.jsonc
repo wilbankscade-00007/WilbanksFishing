@@ -1,0 +1,110 @@
+{
+  "name": "LeaderboardEntry",
+  "type": "object",
+  "properties": {
+    "youtube_channel_id": {
+      "type": "string",
+      "title": "YouTube Channel ID"
+    },
+    "display_name": {
+      "type": "string",
+      "title": "Display Name"
+    },
+    "avatar_url": {
+      "type": "string",
+      "format": "uri",
+      "title": "Avatar URL"
+    },
+    "channel_url": {
+      "type": "string",
+      "title": "Channel URL"
+    },
+    "points": {
+      "type": "number",
+      "default": 0,
+      "title": "Points (All-Time)"
+    },
+    "comment_count": {
+      "type": "number",
+      "default": 0,
+      "title": "Comments"
+    },
+    "videos_commented": {
+      "type": "number",
+      "default": 0,
+      "title": "Videos Commented"
+    },
+    "top_comments": {
+      "type": "number",
+      "default": 0,
+      "title": "Top Comments"
+    },
+    "streak": {
+      "type": "number",
+      "default": 0,
+      "title": "Current Streak"
+    },
+    "badges": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "title": "Badges"
+    },
+    "best_comment_text": {
+      "type": "string",
+      "title": "Best Comment Text"
+    },
+    "best_comment_video_id": {
+      "type": "string",
+      "title": "Best Comment Video ID"
+    },
+    "best_comment_likes": {
+      "type": "number",
+      "default": 0,
+      "title": "Best Comment Likes"
+    },
+    "monthly_points": {
+      "type": "number",
+      "default": 0,
+      "title": "Monthly Points"
+    },
+    "monthly_comment_count": {
+      "type": "number",
+      "default": 0,
+      "title": "Monthly Comments"
+    },
+    "last_active": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Last Active"
+    },
+    "last_synced": {
+      "type": "string",
+      "title": "Last Sync Cycle"
+    }
+  },
+  "required": [
+    "youtube_channel_id",
+    "display_name",
+    "points"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": null,
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

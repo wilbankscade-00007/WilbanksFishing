@@ -1,0 +1,42 @@
+{
+  "description": "When a new catch gallery photo is added, the WilbanksFishing Bot announces it in the crew feed.",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create"
+      ],
+      "entity_name": "CatchGalleryPhoto"
+    }
+  },
+  "name": "Bot Announce New Catch Photo",
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "bot_announce_photo",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "announce": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "bot-announce",
+            "args": {
+              "type": "photo",
+              "title": "${ .trigger.data.caption // .trigger.data.author // \"a fresh catch\" }",
+              "url": "${ .trigger.data.image_url }"
+            }
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Announce new catch photo",
+            "description": "Bot posts in crew feed"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "description": "When a new 'What's New' update is added, the WilbanksFishing Bot announces it in the crew feed.",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create"
+      ],
+      "entity_name": "WhatsNew"
+    }
+  },
+  "name": "Bot Announce New Update",
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "bot_announce_update",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "announce": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "bot-announce",
+            "args": {
+              "type": "update",
+              "title": "${ .trigger.data.title }",
+              "url": "${ .trigger.data.link_url }"
+            }
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Announce new update",
+            "description": "Bot posts in crew feed"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "name": "PhotoMarquee2",
+  "type": "object",
+  "properties": {
+    "image_url": {
+      "type": "string",
+      "format": "uri",
+      "title": "Image URL"
+    },
+    "caption": {
+      "type": "string",
+      "title": "Caption"
+    },
+    "author": {
+      "type": "string",
+      "title": "Submitted By"
+    },
+    "display_order": {
+      "type": "number",
+      "default": 0,
+      "title": "Display Order"
+    }
+  },
+  "required": [
+    "image_url"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": null,
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

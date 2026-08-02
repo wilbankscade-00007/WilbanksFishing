@@ -1,0 +1,68 @@
+{
+  "name": "Reaction",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "title": "User ID"
+    },
+    "author_name": {
+      "type": "string",
+      "title": "Author Name"
+    },
+    "target_type": {
+      "type": "string",
+      "enum": [
+        "catch_vote",
+        "video_reaction",
+        "emoji_shout",
+        "checkin"
+      ],
+      "title": "Target Type"
+    },
+    "target_id": {
+      "type": "string",
+      "title": "Target ID"
+    },
+    "value": {
+      "type": "string",
+      "title": "Value"
+    }
+  },
+  "required": [
+    "user_id",
+    "target_type",
+    "target_id",
+    "value"
+  ],
+  "rls": {
+    "create": {
+      "data.user_id": "{{user.id}}"
+    },
+    "read": null,
+    "update": {
+      "$or": [
+        {
+          "data.user_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "data.user_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

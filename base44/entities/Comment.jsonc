@@ -1,0 +1,47 @@
+{
+  "name": "Comment",
+  "type": "object",
+  "properties": {
+    "author": {
+      "type": "string",
+      "title": "Author"
+    },
+    "text": {
+      "type": "string",
+      "title": "Comment Text"
+    },
+    "image_url": {
+      "type": "string",
+      "format": "uri",
+      "title": "Screenshot"
+    },
+    "video_url": {
+      "type": "string",
+      "title": "Video URL"
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false,
+      "title": "Featured (Comment of the Week)"
+    }
+  },
+  "required": [],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": null,
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "SiteImage",
+  "type": "object",
+  "properties": {
+    "key": {
+      "type": "string",
+      "title": "Identifier"
+    },
+    "label": {
+      "type": "string",
+      "title": "Label"
+    },
+    "image_url": {
+      "type": "string",
+      "format": "uri",
+      "title": "Image URL"
+    }
+  },
+  "required": [
+    "key",
+    "label",
+    "image_url"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": null,
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

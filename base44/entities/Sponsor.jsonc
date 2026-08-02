@@ -1,0 +1,59 @@
+{
+  "name": "Sponsor",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Sponsor Name"
+    },
+    "logo_url": {
+      "type": "string",
+      "format": "uri",
+      "title": "Logo URL"
+    },
+    "website_url": {
+      "type": "string",
+      "format": "uri",
+      "title": "Website URL"
+    },
+    "bio": {
+      "type": "string",
+      "title": "Bio / Description"
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "title": "Pictures"
+    },
+    "display_order": {
+      "type": "number",
+      "default": 0,
+      "title": "Display Order"
+    }
+  },
+  "required": [
+    "name",
+    "website_url"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": null,
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

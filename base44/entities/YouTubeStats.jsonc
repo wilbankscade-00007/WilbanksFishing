@@ -1,0 +1,113 @@
+{
+  "name": "YouTubeStats",
+  "type": "object",
+  "properties": {
+    "subscribers": {
+      "type": "number",
+      "default": 0,
+      "title": "Subscribers"
+    },
+    "total_views": {
+      "type": "number",
+      "default": 0,
+      "title": "Total Views"
+    },
+    "video_count": {
+      "type": "number",
+      "default": 0,
+      "title": "Video Count"
+    },
+    "channel_title": {
+      "type": "string",
+      "title": "Channel Title"
+    },
+    "channel_created_date": {
+      "type": "string",
+      "title": "Channel Created Date"
+    },
+    "country": {
+      "type": "string",
+      "title": "Country"
+    },
+    "custom_url": {
+      "type": "string",
+      "title": "Custom URL"
+    },
+    "latest_video_title": {
+      "type": "string",
+      "title": "Latest Video Title"
+    },
+    "latest_video_url": {
+      "type": "string",
+      "title": "Latest Video URL"
+    },
+    "latest_video_views": {
+      "type": "number",
+      "default": 0,
+      "title": "Latest Video Views"
+    },
+    "latest_video_likes": {
+      "type": "number",
+      "default": 0,
+      "title": "Latest Video Likes"
+    },
+    "latest_video_comments": {
+      "type": "number",
+      "default": 0,
+      "title": "Latest Video Comments"
+    },
+    "recent_videos": {
+      "type": "array",
+      "title": "Recent Videos",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "video_id": {
+            "type": "string"
+          },
+          "views": {
+            "type": "number"
+          },
+          "likes": {
+            "type": "number"
+          },
+          "comments": {
+            "type": "number"
+          },
+          "published_date": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "display_order": {
+      "type": "number",
+      "default": 0,
+      "title": "Display Order"
+    }
+  },
+  "required": [
+    "subscribers"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": null,
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

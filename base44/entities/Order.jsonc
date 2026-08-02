@@ -1,0 +1,83 @@
+{
+  "name": "Order",
+  "type": "object",
+  "properties": {
+    "order_id": {
+      "type": "string",
+      "title": "Wix Order ID"
+    },
+    "checkout_id": {
+      "type": "string",
+      "title": "Checkout ID"
+    },
+    "buyer_email": {
+      "type": "string",
+      "title": "Buyer Email"
+    },
+    "buyer_name": {
+      "type": "string",
+      "title": "Buyer Name"
+    },
+    "total": {
+      "type": "number",
+      "default": 0,
+      "title": "Total"
+    },
+    "currency": {
+      "type": "string",
+      "default": "USD",
+      "title": "Currency"
+    },
+    "items": {
+      "type": "array",
+      "title": "Items",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "price": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "order_id",
+    "buyer_email"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "data.buyer_email": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "name": "WilbanksFishing Bot Auto-Post",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "scheduled",
+      "events": [],
+      "schedule_mode": "recurring",
+      "cron_expression": "0 */4 * * *",
+      "one_time_date": null,
+      "timezone": "America/Chicago",
+      "interval_value": null,
+      "interval_unit": null,
+      "interval_anchor": null,
+      "ends_type": "never",
+      "ends_on_date": null,
+      "ends_after_count": null
+    }
+  },
+  "description": "The WilbanksFishing Bot keeps the Crew Feed lively and friendly by posting an upbeat, on-brand message every 4 hours when Cade is away.",
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "wilbanks_bot_post",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "bot_post": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "wilbanks-bot-post"
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Bot posts to crew feed",
+            "description": "Upbeat, on-brand message"
+          }
+        }
+      }
+    ]
+  }
+}

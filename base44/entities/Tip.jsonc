@@ -1,0 +1,68 @@
+{
+  "name": "Tip",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "title": "Title"
+    },
+    "content": {
+      "type": "string",
+      "title": "Content"
+    },
+    "category": {
+      "type": "string",
+      "default": "General",
+      "title": "Category"
+    },
+    "image_url": {
+      "type": "string",
+      "format": "uri",
+      "title": "Image URL"
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "heading": {
+            "type": "string",
+            "title": "Section Heading"
+          },
+          "body": {
+            "type": "string",
+            "title": "Section Body"
+          },
+          "image_url": {
+            "type": "string",
+            "format": "uri",
+            "title": "Section Image URL"
+          }
+        }
+      },
+      "title": "Sections"
+    }
+  },
+  "required": [
+    "title",
+    "content"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": null,
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

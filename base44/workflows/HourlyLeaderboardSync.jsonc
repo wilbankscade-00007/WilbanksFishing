@@ -1,0 +1,45 @@
+{
+  "name": "Hourly Leaderboard Sync",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "scheduled",
+      "events": [],
+      "schedule_mode": "recurring",
+      "cron_expression": "0 * * * *",
+      "one_time_date": null,
+      "timezone": "America/Chicago",
+      "interval_value": null,
+      "interval_unit": null,
+      "interval_anchor": null,
+      "ends_type": "never",
+      "ends_on_date": null,
+      "ends_after_count": null
+    }
+  },
+  "description": "Automatically refreshes the fan leaderboard by scanning recent YouTube comments every hour, regardless of site traffic.",
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "hourly_leaderboard_sync",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "sync": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "sync-leaderboard",
+            "args": {}
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Sync leaderboard",
+            "description": "Scan YouTube comments + recompute points"
+          }
+        }
+      }
+    ]
+  }
+}

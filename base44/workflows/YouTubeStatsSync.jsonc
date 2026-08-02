@@ -1,0 +1,45 @@
+{
+  "description": "Refreshes the WilbanksFishing YouTube channel stats every 5 minutes so subscriber/view/video counts stay current without relying on page visits.",
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "youtube_stats_sync",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "sync_stats": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "sync-youtube-stats",
+            "args": {}
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Sync YouTube stats",
+            "description": "Refresh channel stats"
+          }
+        }
+      }
+    ]
+  },
+  "name": "YouTube Stats Sync",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "scheduled",
+      "events": [],
+      "schedule_mode": "recurring",
+      "cron_expression": "*/5 * * * *",
+      "one_time_date": null,
+      "timezone": "America/Chicago",
+      "interval_value": null,
+      "interval_unit": null,
+      "interval_anchor": null,
+      "ends_type": "never",
+      "ends_on_date": null,
+      "ends_after_count": null
+    }
+  }
+}

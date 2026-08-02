@@ -1,0 +1,37 @@
+{
+  "name": "ChatMessage",
+  "type": "object",
+  "properties": {
+    "author_id": {
+      "type": "string",
+      "title": "Author ID"
+    },
+    "author_name": {
+      "type": "string",
+      "title": "Author Name"
+    },
+    "text": {
+      "type": "string",
+      "title": "Message Text"
+    }
+  },
+  "required": [
+    "author_id",
+    "author_name",
+    "text"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

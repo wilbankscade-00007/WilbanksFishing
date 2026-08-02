@@ -1,0 +1,73 @@
+{
+  "name": "ActiveSession",
+  "type": "object",
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "title": "Session ID"
+    },
+    "last_seen": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Last Seen"
+    },
+    "country": {
+      "type": "string",
+      "title": "Country"
+    },
+    "country_code": {
+      "type": "string",
+      "title": "Country Code"
+    },
+    "region": {
+      "type": "string",
+      "title": "Region"
+    },
+    "city": {
+      "type": "string",
+      "title": "City"
+    },
+    "latitude": {
+      "type": "number",
+      "title": "Latitude"
+    },
+    "longitude": {
+      "type": "number",
+      "title": "Longitude"
+    },
+    "member_name": {
+      "type": "string",
+      "title": "Member Name"
+    },
+    "member_email": {
+      "type": "string",
+      "title": "Member Email"
+    }
+  },
+  "required": [
+    "session_id",
+    "last_seen"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
