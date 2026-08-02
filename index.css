@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 215 28% 91%;
+    --card: 0 20% 9%;
+    --card-foreground: 215 28% 91%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 215 28% 91%;
+    --primary: 0 100% 44%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 20% 9%;
+    --secondary-foreground: 215 28% 91%;
+    --muted: 0 15% 10%;
+    --muted-foreground: 0 5% 45%;
+    --accent: 0 100% 44%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 25% 12%;
+    --input: 0 25% 12%;
+    --ring: 0 100% 44%;
+    --radius: 0.25rem;
+
+    --font-heading: 'Syne', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-display: 'Syne', sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 215 28% 91%;
+    --sidebar-primary: 0 100% 44%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 20% 9%;
+    --sidebar-accent-foreground: 215 28% 91%;
+    --sidebar-border: 0 25% 12%;
+    --sidebar-ring: 0 100% 44%;
+
+    --chart-1: 0 100% 44%;
+    --chart-2: 0 70% 35%;
+    --chart-3: 0 0% 30%;
+    --chart-4: 0 0% 55%;
+    --chart-5: 0 80% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+  ::selection {
+    background: hsl(0 100% 44%);
+    color: hsl(0 0% 100%);
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(8, 8, 8, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .glass-light {
+    background: rgba(28, 16, 16, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .topo-line {
+    background: linear-gradient(90deg, transparent, hsl(0 100% 44% / 0.3), transparent);
+    height: 1px;
+  }
+  .text-glow {
+    text-shadow: 0 0 30px hsl(0 100% 44% / 0.6), 0 2px 0 rgba(0,0,0,0.3), 0 4px 10px rgba(0,0,0,0.55);
+  }
+  .bio-glow {
+    box-shadow: 0 0 20px hsl(0 100% 44% / 0.4);
+  }
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+.lift-3d {
+  position: relative;
+  transform: translateZ(0);
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform .2s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease, background-color .2s ease, border-color .2s ease, color .2s ease;
+}
+.lift-3d::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgba(225,0,0,0.18), transparent 50%);
+  opacity: 0;
+  transition: opacity .25s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.lift-3d:hover::after { opacity: 1; }
+
+/* 3D extruded headings — site-wide */
+h1, h2, h3 {
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.40),
+    0 2px 0 rgba(0,0,0,0.32),
+    0 3px 1px rgba(0,0,0,0.24),
+    0 5px 8px rgba(0,0,0,0.50);
+}
+
+/* 3D section planes */
+.tilt-section {
+  position: relative;
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.lift-3d:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.45);
+}
+.lift-3d:active {
+  transform: translateY(-1px);
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0A0A0A; }
+::-webkit-scrollbar-thumb { background: #1C1010; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #E10000; }
+
+@keyframes ripple-out {
+  0% { transform: scale(0); opacity: 0.5; }
+  100% { transform: scale(4); opacity: 0; }
+}
+.animate-ripple { animation: ripple-out 0.6s ease-out forwards; }
+
+@keyframes drift {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-drift { animation: drift 40s linear infinite; will-change: transform; }
+
+.gpu { transform: translateZ(0); will-change: transform; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+img, video, canvas { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
